@@ -1,6 +1,9 @@
 <script setup lang="ts">
 
 import SvgIcon from "../ui/SvgIcon.vue";
+import {useProfileStore} from "../../stores/profile.store.ts";
+import {onMounted} from "vue";
+import SubscriberLink from "../ui/SubscriberLink.vue";
 
 const menuItems = [
   {
@@ -24,6 +27,12 @@ const menuItems = [
     link: '/community',
   },
 ];
+
+const profileStore = useProfileStore();
+
+onMounted(() => {
+  profileStore.loadTestAccounts();
+});
 </script>
 
 <template>
@@ -44,6 +53,23 @@ const menuItems = [
         </li>
       </ul>
     </nav>
+
+    <div class="sidebar__subscribers subscribers">
+      <h6 class="subscribers__title mb24">Подписчики</h6>
+
+      <ul v-if="profileStore.testProfiles" class="subscribers__list mb20">
+        <li v-for="testProfile in profileStore.testProfiles" :key="testProfile.id" class="subscribers__item">
+          <SubscriberLink :show-name="true" :avatar-url="testProfile.avatarUrl"
+                          :full-name="`${testProfile.firstName} ${testProfile.lastName}`"
+                          :to="`/profile/${testProfile.id}`"/>
+        </li>
+      </ul>
+
+      <RouterLink class="subscribers__all-link" :to="'/search'">
+        <h6 class="h6">Все подписчики</h6>
+        <SvgIcon :name="'arrow'" class="icon16"/>
+      </RouterLink>
+    </div>
 
     <RouterLink :to="'/settings'" class="sidebar__footer">
       <div class="sidebar__user">
@@ -119,6 +145,27 @@ const menuItems = [
 
 .sidebar__nav-label {
   display: inline-block;
+}
+
+.sidebar__subscribers {
+  margin-top: 32px;
+}
+
+.subscribers__title {
+  color: var(--light-color-transparrent);
+}
+
+.subscribers__list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.subscribers__all-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--primary-color);
 }
 
 .sidebar__footer {
