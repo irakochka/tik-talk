@@ -1,6 +1,6 @@
 import {defineStore} from "pinia";
 import {ref} from "vue";
-import type {Profile} from "../types/profile.ts";
+import type {Profile, UpdateProfileDto} from "../types/profile.ts";
 import {profileApi} from "../api/profile.api.ts";
 
 export const useProfileStore = defineStore('profile', () => {
@@ -13,9 +13,25 @@ export const useProfileStore = defineStore('profile', () => {
     }
 
     async function loadMe() {
-        const {data} = await profileApi.getMe();
+        const {data} = await profileApi.me();
+        profile.value = data;
+        return data;
+    }
+
+    async function loadAccount(id: number) {
+        const { data } = await profileApi.getAccount(id);
+        return data;
+    }
+
+    async function updateMe(dto: UpdateProfileDto) {
+        const {data} = await profileApi.update(dto);
         profile.value = data;
     }
 
-    return { testProfiles, profile, loadTestAccounts, loadMe }
+    async function updateAvatar(file: File) {
+        const { data } = await profileApi.uploadAvatar(file);
+        profile.value = data;
+    }
+
+    return { testProfiles, profile, loadTestAccounts, loadMe, loadAccount, updateMe, updateAvatar }
 })

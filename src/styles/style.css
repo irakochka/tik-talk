@@ -231,6 +231,31 @@ h6 {
   height: 20px;
 }
 
+/* stack */
+.stack-item {
+  padding: 4px 8px;
+  display: inline;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 12px;
+  border-radius: 4px;
+  border: 1px solid var(--light-color);
+}
+
+/* colors */
+.negative-color {
+  color: var(--light-negative-color);
+}
+
+.success-color {
+  color: var(--light-success-color);
+}
+
+/* login-form */
+.login-form__label .field__label {
+  color: var(--light-color) !important;
+}
+
 /* toast */
 .Vue-Toastification__toast--success,
 .Vue-Toastification__toast--error {

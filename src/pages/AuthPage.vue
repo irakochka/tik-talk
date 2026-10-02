@@ -74,7 +74,7 @@ async function onSubmit(event: Event) {
         </AuthInput>
       </AuthLabel>
 
-      <BaseButton>Войти</BaseButton>
+      <BaseButton class="btn--primary" type="submit">Войти</BaseButton>
     </form>
 
     <img class="auth-illustration" :src="logoSrc" alt=""/>

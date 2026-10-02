@@ -10,3 +10,22 @@ export type Profile = {
     city?: string
     description?: string
 }
+
+export type ProfileForm = {
+    firstName: string
+    lastName: string
+    username: string
+    description: string
+    city: string
+    avatarUrl: string
+    avatarFile: File | null
+    stack?: string[]
+}
+
+export type UpdateProfileDto = {
+    firstName?: string
+    lastName?: string
+    stack?: string[]
+    city?: string
+    description?: string
+}

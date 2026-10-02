@@ -4,6 +4,7 @@ import SvgIcon from "../ui/SvgIcon.vue";
 import {useProfileStore} from "../../stores/profile.store.ts";
 import {onMounted} from "vue";
 import SubscriberLink from "../ui/SubscriberLink.vue";
+import AvatarCircle from "../ui/AvatarCircle.vue";
 
 const menuItems = [
   {
@@ -72,10 +73,10 @@ onMounted(() => {
       </RouterLink>
     </div>
 
-    <RouterLink :to="'/settings'" class="sidebar__footer">
+    <RouterLink v-if="profileStore.profile" class="sidebar__footer" :to="'/settings'" active-class="is-active">
       <div class="sidebar__user">
-        <img src="/assets/images/avatar-placeholder.png" class="size32"/>
-        <div class="sidebar__user-name">username</div>
+        <AvatarCircle :avatar-url="profileStore.profile.avatarUrl" class="size32"/>
+        <div class="sidebar__user-name">{{ profileStore.profile.username}}</div>
       </div>
 
       <span class="sidebar__footer-icon">

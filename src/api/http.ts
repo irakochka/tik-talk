@@ -32,7 +32,7 @@ http.interceptors.response.use(
             | undefined
 
         if (
-            error.response?.status !== 401 ||
+            error.response?.status !== 403 ||
             !original ||
             original._retry ||
             original.url?.includes('/auth/refresh')
