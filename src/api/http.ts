@@ -1,8 +1,6 @@
 import axios from 'axios'
 
 export const http = axios.create({
-    baseURL: import.meta.env.DEV
-        ? '/yt-course'
-        : 'https://icherniakov.ru/yt-course',
+    baseURL: 'http://localhost:8008',
     timeout: 10000,
 })

@@ -1,6 +1,4 @@
-const BASE_URL = import.meta.env.DEV
-    ? '/yt-course'
-    : 'https://icherniakov.ru/yt-course';
+const BASE_URL = 'http://localhost:8008';
 
 export function toPublicUrl(path: string): string {
     const base = import.meta.env.BASE_URL.replace(/\/+$/, '');
