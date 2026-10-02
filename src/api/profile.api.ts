@@ -5,4 +5,7 @@ export const profileApi = {
     async getTestAccounts() {
         return await http.get<Profile[]>('/account/test_accounts');
     },
+    async getMe() {
+        return await http.get<Profile>('/account/me');
+    }
 }

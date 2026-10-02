@@ -31,6 +31,7 @@ const menuItems = [
 const profileStore = useProfileStore();
 
 onMounted(() => {
+  profileStore.loadMe();
   profileStore.loadTestAccounts();
 });
 </script>

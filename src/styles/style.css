@@ -201,6 +201,16 @@ h6 {
   justify-content: center;
 }
 
+.field-icon {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  padding: 0;
+}
+
 .icon10 {
   width: 10px;
   height: 10px;
@@ -221,4 +231,19 @@ h6 {
   height: 20px;
 }
 
+/* toast */
+.Vue-Toastification__toast--success,
+.Vue-Toastification__toast--error {
+  background-color: var(--dark-color) !important;
+  color: var(--light-color) !important;
+}
 
+.Vue-Toastification__toast {
+  border-radius: 4px !important;
+  box-shadow: none !important;
+  font-family: 'JetBrains Mono', monospace !important;
+}
+
+.Vue-Toastification__toast-body {
+  font-size: 13px!important;
+}

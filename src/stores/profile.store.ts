@@ -5,12 +5,17 @@ import {profileApi} from "../api/profile.api.ts";
 
 export const useProfileStore = defineStore('profile', () => {
     const testProfiles = ref<Profile[]>();
+    const profile = ref<Profile>();
 
     async function loadTestAccounts() {
         const {data} = await profileApi.getTestAccounts();
-        testProfiles.value = data.slice(0, 3)
-        console.log(testProfiles.value )
+        testProfiles.value = data.slice(0, 3);
     }
 
-    return { testProfiles, loadTestAccounts }
+    async function loadMe() {
+        const {data} = await profileApi.getMe();
+        profile.value = data;
+    }
+
+    return { testProfiles, profile, loadTestAccounts, loadMe }
 })
